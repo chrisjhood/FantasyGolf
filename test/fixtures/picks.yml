@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  earnings: 1
+  golfer_id: 1
+  tournament_id: 1
+  user_id: 1
+
+two:
+  earnings: 1
+  golfer_id: 1
+  tournament_id: 1
+  user_id: 1

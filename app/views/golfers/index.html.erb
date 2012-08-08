@@ -1,0 +1,23 @@
+<h1>Listing golfers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @golfers.each do |golfer| %>
+  <tr>
+    <td><%= golfer.name %></td>
+    <td><%= link_to 'Show', golfer %></td>
+    <td><%= link_to 'Edit', edit_golfer_path(golfer) %></td>
+    <td><%= link_to 'Destroy', golfer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Golfer', new_golfer_path %>

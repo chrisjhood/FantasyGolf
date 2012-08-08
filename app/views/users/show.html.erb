@@ -1,0 +1,6 @@
+<br />
+<br />
+PICKS<br />
+<% @user.picks.each do |pick| %>
+<%= pick.golfer.name %>(<%= pick.tournament.name%>)<%= link_to 'Destroy', pick, confirm: 'Are you sure?', method: :delete %><br />
+<% end %>

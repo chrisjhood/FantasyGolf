@@ -1,0 +1,36 @@
+
+<!-- <%#= button_to "Update", :controller => 'standings', :action => 'update_all'%> -->
+
+<table>
+  <tr>
+	<th>Name</th>
+	<% @tournaments.each do |tournament|%>
+	<th><%= link_to "#{tournament.name}", tournament %></th>
+	<th>Earnings</th>
+	<% end %>
+    <th>Total Earnings</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= link_to "#{user.email}", user %></td>
+	<% @tournaments.each do |tournament|%>
+		<% if tournament.picks.find_by_user_id(user.id).nil? %>
+		<td>-</td>
+		<td>-</td>
+		<% else %>
+		<td><%= tournament.picks.find_by_user_id(user.id).golfer.name %></td>
+		<td><%= tournament.picks.find_by_user_id(user.id).earnings %>
+		<% end %>
+	<% end %>	
+  <td><%= user.total_earnings %></td>
+	</tr>
+<% end %>
+</table>
+
+<h2>TESTING EARNINGS SCRAPING</h2>
+
+<%= @link%>
+

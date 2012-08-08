@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Earnings:</b>
+  <%= @pick.earnings %>
+</p>
+
+<p>
+  <b>Golfer:</b>
+  <%= @pick.golfer_id %>
+</p>
+
+<p>
+  <b>Tournament:</b>
+  <%= @pick.tournament_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @pick.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_pick_path(@pick) %> |
+<%= link_to 'Back', picks_path %>
