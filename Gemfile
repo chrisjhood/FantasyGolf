@@ -10,6 +10,7 @@ gem 'devise'
 gem 'nokogiri'
 gem "twitter-bootstrap-rails"
 gem "xml-simple"
+gem 'pry'
 
 # Gems used only for assets and not required
 # in production environments by default.

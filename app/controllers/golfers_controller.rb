@@ -1,8 +1,41 @@
 class GolfersController < ApplicationController
   # GET /golfers
   # GET /golfers.json
+  require 'open-uri'
+  
+  def refresh_golfer_list
+    Golfer.destroy_all
+     url = "http://api.sportsdatallc.org/golf-t1/profiles/pga/2012/players/profiles.xml?api_key=5r2y4j9uf5huw2cv8frbs7st"
+      doc = Nokogiri::XML(open(url))
+      
+      @gt = doc.children.children.children.each do |x| 
+
+            if x.attributes["id"] && x.attributes["id"].value
+              @golfer = Golfer.new
+             @golfer.api_id = x.attributes["id"].value
+           end
+           
+            if x.attributes["first_name"] && x.attributes["first_name"].value
+            @golfer.first_name = x.attributes["first_name"].value
+             
+            end
+            
+            
+             if x.attributes["last_name"] && x.attributes["last_name"].value
+               
+               @golfer.last_name = x.attributes["last_name"].value
+             end
+
+          @golfer.save if @golfer
+        
+      end
+      redirect_to :action => 'index'
+  end
+  
   def index
     @golfers = Golfer.all
+   
+    
 
     respond_to do |format|
       format.html # index.html.erb

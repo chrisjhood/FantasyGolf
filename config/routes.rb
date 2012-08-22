@@ -13,5 +13,6 @@ FantasyGolf::Application.routes.draw do
 
   resources :picks
 
- 
+  match "/refresh_tournament_list" => "tournaments#refresh_tournament_list"
+  match "/refresh_golfer_list" => "golfers#refresh_golfer_list"
 end

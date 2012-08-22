@@ -1,3 +1,5 @@
+
+
 require 'open-uri'
 require 'xmlsimple'
 
@@ -10,7 +12,7 @@ class StandingsController < ApplicationController
       @tournaments = Tournament.all
       @tour = []
       @season
-      @link
+      # @doc
       #// list of tournaments
 
       #// go through each tournament, doing something like below
@@ -24,13 +26,8 @@ class StandingsController < ApplicationController
       # end
       
       
-      doc = Nokogiri::HTML(open("http://api.sportsdatallc.org/golf-t1/schedule/pga/2012/tournaments/schedule.xml?api_key=5r2y4j9uf5huw2cv8frbs7st"))
-      doc.xpath('/tour').each do |link|
-      puts link.content
-         
-          
-          
-      end
+      # @doc = Nokogiri::XML(open("http://api.sportsdatallc.org/golf-t1/schedule/pga/2012/tournaments/schedule.xml?api_key=5r2y4j9uf5huw2cv8frbs7st"))
+      #binding.pry
       
       
       
