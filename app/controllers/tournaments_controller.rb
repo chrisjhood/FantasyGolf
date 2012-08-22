@@ -48,6 +48,7 @@ class TournamentsController < ApplicationController
   # GET /tournaments/1
   # GET /tournaments/1.json
   def show
+    @pick = Pick.new
     @tournament = Tournament.find(params[:id])
       @list_of_golfers = []
       url = "http://api.sportsdatallc.org/golf-t1/summary/pga/2012/tournaments/#{@tournament.api_id}/summary.xml?api_key=5r2y4j9uf5huw2cv8frbs7st"
@@ -59,8 +60,8 @@ class TournamentsController < ApplicationController
 
            golfer = Golfer.find_by_api_id(x.attributes["id"].value)
            @list_of_golfers << golfer
-           @tournament.golfers << golfer
-           @tournament.save
+           # @tournament.golfers << @list_of_golfer
+           #           @tournament.save
       
        end
 

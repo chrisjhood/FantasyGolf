@@ -4,7 +4,24 @@
   <b>Name:</b>
   <%= @tournament.name %>
 </p>
+<% if !current_user.picks.find_by_tournament_id(@tournament.id).nil? %>
+You've already chosen <%= current_user.picks.find_by_tournament_id(@tournament.id).golfer.first_name %>.
+<%else%>
+<%= form_for(@pick) do |f|%>
 
+<% @list_of_golfers.each do |golfer|%>
+<% if current_user.picks.find_by_golfer_id(golfer.id).nil? %>
+<%= golfer.last_name %> <%= golfer.first_name%> <%= golfer.id%> <%= check_box_tag :golfer_id, "#{golfer.id}" %><br />
+<% else %>
+<span style="color:red"><%= golfer.last_name %> <%= golfer.first_name%></span><br />
+<% end %>
+<% end %>
+
+<%= f.hidden_field :user_id, :value => current_user.id %>
+<%= f.hidden_field :tournament_id, :value => @tournament.id %>
+<%= f.submit "Choose golfer" %>
+<% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_tournament_path(@tournament) %> |
 <%= link_to 'Back', tournaments_path %>

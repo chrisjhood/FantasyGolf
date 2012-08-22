@@ -41,7 +41,10 @@ class PicksController < ApplicationController
   # POST /picks.json
   def create
     @pick = Pick.new(params[:pick])
-
+    @pick.user_id = params[:pick][:user_id]
+    @pick.tournament_id = params[:pick][:tournament_id]
+    @pick.golfer_id = params[:golfer_id]
+    
     respond_to do |format|
       if @pick.save
         format.html { redirect_to @pick, notice: 'Pick was successfully created.' }
